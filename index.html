@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA-SELLING-XM // CYBERGATE GATEWAY</title>
+    <style>
+        /* शुभम भाई का स्पेशल जेट ब्लैक बेस और साइबर पीले-इलेक्ट्रिक ब्लू नियॉन लुक का महा-तांडव */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
+        body { background-color: #000000; color: #00f0ff; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        
+        .cybergate-overlay-container { width: 100%; max-width: 420px; padding: 20px; }
+        
+        /* आलीशान साइबर हैकिंग एंट्री कार्ड */
+        .hacker-auth-card { background: linear-gradient(135deg, #040408 0%, #07070f 100%); border: 2px solid #ffbc00; border-radius: 16px; padding: 35px 25px; box-shadow: 0 0 30px rgba(255,188,0,0.25); text-align: center; position: relative; }
+        .hacker-auth-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #ffbc00, #00f0ff); border-radius: 16px 16px 0 0; }
+        
+        .gate-title-node { font-size: 15px; font-weight: 900; letter-spacing: 3px; color: #ffffff; text-shadow: 0 0 10px #ffbc00; text-transform: uppercase; margin-bottom: 25px; }
+        
+        .input-block-terminal { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+        .input-block-terminal label { font-size: 9.5px; letter-spacing: 1px; color: #52527a; text-transform: uppercase; font-weight: bold; }
+        
+        .cyber-text-field { width: 100%; background: #000000; border: 1px solid #1a1a2e; padding: 14px; border-radius: 8px; color: #00ffcc; font-size: 13px; font-weight: bold; outline: none; transition: all 0.3s; }
+        .cyber-text-field:focus { border-color: #00f0ff; box-shadow: 0 0 15px rgba(0,240,255,0.2); }
+        
+        .cyber-gateway-submit-btn { width: 100%; background: #ffbc00; color: #000000; border: none; padding: 15px; font-size: 12px; font-weight: 900; letter-spacing: 2px; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255,188,0,0.25); margin-top: 10px; }
+        .cyber-gateway-submit-btn:hover { background: #ffffff; transform: translateY(-1px); box-shadow: 0 6px 20px #ffffff; }
+        .gateway-toggle-link-row { margin-top: 20px; font-size: 11px; font-weight: bold; color: #65658a; text-transform: uppercase; }
+        .toggle-action-hook { color: #00f0ff; cursor: pointer; text-decoration: underline; margin-left: 5px; }
+        .toggle-action-hook:hover { color: #ffffff; }
+
+        /* रीयल-टाइम लाइव अलर्ट पॉप-अप बॉक्स (Bilingual Chroma Alert Banner) */
+        .bilingual-chroma-toast { display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); padding: 15px 24px; border-radius: 8px; font-size: 11.5px; font-weight: bold; z-index: 10000; line-height: 1.4; max-width: 90%; width: 420px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
+    </style>
+</head>
+<body>
+
+    <div class="cybergate-overlay-container">
+        <!-- लॉगिन फॉर्म इंटरफेस डिब्बा (Login Interface Gate) -->
+        <div class="hacker-auth-card" id="login-interface-gate-box">
+            <div class="gate-title-node">🔐 SECURE TERMINAL LOGIN 🔐</div>
+            <div class="input-block-terminal">
+                <label>Registered Mobile Node</label>
+                <input type="tel" id="login-mobile" class="cyber-text-field" placeholder="Enter 10-digit number...">
+            </div>
+            <div class="input-block-terminal" style="margin-bottom: 25px;">
+                <label>Security Secure PIN PIN</label>
+                <input type="password" id="login-password" class="cyber-text-field" placeholder="••••••••">
+            </div>
+            <button class="cyber-gateway-submit-btn" onclick="executeGatewayLoginOverride()">Access Terminal</button>
+            <div class="gateway-toggle-link-row">
+                New Worker Agent? <span class="toggle-action-hook" onclick="switchGatewayInterfaceForm('REGISTER')">Register Node 💀</span>
+            </div>
+        </div>
+        <!-- रजिस्ट्री फॉर्म इंटरफेस डिब्बा (Register Interface Gate) -->
+        <div class="hacker-auth-card" id="register-interface-gate-box" style="display: none; border-color: #00f0ff; box-shadow: 0 0 30px rgba(0,240,255,0.2);">
+            <div class="gate-title-node" style="text-shadow: 0 0 10px #00f0ff;">🏴‍☠️ CREATE WORKER REGISTRY 🏴‍☠️</div>
+            <div class="input-block-terminal">
+                <label>Agent Profile Username</label>
+                <input type="text" id="reg-username" class="cyber-text-field" placeholder="Enter operator name...">
+            </div>
+            <div class="input-block-terminal">
+                <label>Permanent Mobile Number</label>
+                <input type="tel" id="reg-mobile" class="cyber-text-field" placeholder="Enter 10-digit mobile...">
+            </div>
+            <div class="input-block-terminal" style="margin-bottom: 25px;">
+                <label>Set Security Password PIN</label>
+                <input type="password" id="reg-password" class="cyber-text-field" placeholder="Create login PIN...">
+            </div>
+            <button class="cyber-gateway-submit-btn" style="background:#00f0ff; box-shadow: 0 4px 15px rgba(0,240,255,0.25);" onclick="executeGatewayRegisterOverride()">Confirm Registration</button>
+            <div class="gateway-toggle-link-row">
+                Already Registered? <span class="toggle-action-hook" style="color:#ffbc00;" onclick="switchGatewayInterfaceForm('LOGIN')">Sign In 🔐</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bilingual-chroma-toast" id="gateway-bilingual-toast"></div>
+    <script>
+        // काम: प्रमोटर के लिंक से आने वाले इनवाइट कोड (?track_node=) को ऑटोमैटिक कैप्चर करना!
+        const URLQueryPipelineParameters = new URLSearchParams(window.location.search);
+        const autoCapturedReferralUplinkNode = URLQueryPipelineParameters.get('track_node') || '';
+
+        function fireGatewayToast(msgEn, msgHi, isSuccess) {
+            const toast = document.getElementById('gateway-bilingual-toast');
+            toast.innerHTML = `<div>${msgEn}</div><div style="font-size:10px;color:#ffbc00;margin-top:4px;">${msgHi}</div>`;
+            toast.style.display = 'block';
+            if (isSuccess) {
+                toast.style.background = 'rgba(5,30,15,0.98)'; toast.style.border = '1px solid #00ff66'; toast.style.color = '#00ff66';
+            } else {
+                toast.style.background = 'rgba(30,5,10,0.98)'; toast.style.border = '1px solid #ff3366'; toast.style.color = '#ff3366';
+            }
+            setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        }
+
+        function switchGatewayInterfaceForm(mode) {
+            if(mode === 'REGISTER') {
+                document.getElementById('login-interface-gate-box').style.display = 'none';
+                document.getElementById('register-interface-gate-box').style.display = 'block';
+            } else {
+                document.getElementById('register-interface-gate-box').style.display = 'none';
+                document.getElementById('login-interface-gate-box').style.display = 'block';
+            }
+        }
+
+        // काम: लॉगिन एक्शन + गलत पासवर्ड होने पर सीधा हिंदी-इंग्लिश साफ़ मैसेज एरर!
+        async function executeGatewayLoginOverride() {
+            const mobile = document.getElementById('login-mobile').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+            
+            if(!mobile || !password) return;
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ mobile, password })
+                });
+                const data = await response.json();
+                
+                if(!response.ok) {
+                    // काम: पासवर्ड गलत होने पर साफ़-साफ़ दोनों भाषाओं में एरर फेंकना!
+                    fireGatewayToast(
+                        "⚠️ Incorrect Password. Please contact the admin for assistance.",
+                        "आपका पासवर्ड गलत है। कृपया सहायता के लिए एडमिन से संपर्क करें।",
+                        false
+                    );
+                } else {
+                    localStorage.setItem('user_session_mobile', mobile);
+                    localStorage.setItem('user_session_token', data.token);
+                    
+                    fireGatewayToast("🟢 Terminal Authorized. Redirecting...", "सुरक्षित कनेक्शन स्थापित। मुख्य माइनिंग हब पर ट्रांसफर...", true);
+                    setTimeout(() => { window.location.href = '/home.html'; }, 1000);
+                }
+            } catch(e){
+                fireGatewayToast("Pipeline connection refused.", "सर्वर से संपर्क नहीं हो पाया।", false);
+            }
+        }
+
+        // काम: नया यूज़र रजिस्ट्री काउंटर + सक्सेस मैसेजेस हिंदी-इंग्लिश दोनों भाषाओं में
+        async function executeGatewayRegisterOverride() {
+            const username = document.getElementById('reg-username').value.trim();
+            const mobile = document.getElementById('reg-mobile').value.trim();
+            const password = document.getElementById('reg-password').value.trim();
+            
+            if(!username || !mobile || !password) return;
+
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ username, mobile, password, track_node: autoCapturedReferralUplinkNode })
+                });
+                const data = await response.json();
+                
+                if(!response.ok) {
+                    fireGatewayToast(data.error || "Registration denied.", "रजिस्ट्री खारिज कर दी गई है। नंबर जांचें।", false);
+                } else {
+                    fireGatewayToast(
+                        "🟢 Success! Your account has been successfully registered in the database core.",
+                        "बधाई हो! आपका अकाउंट डेटाबेस तिजोरी में सफलतापूर्वक रजिस्टर हो गया है।",
+                        true
+                    );
+                    setTimeout(() => { switchGatewayInterfaceForm('LOGIN'); }, 1500);
+                }
+            } catch(e){}
+        }
+
+        // 📱 काम: पेज रिफ्रेश होने पर नो-लॉगआउट सुरक्षा गार्ड!
+        function checkActiveSessionInductionGuard() {
+            const activeMobile = localStorage.getItem('user_session_mobile');
+            const activeToken = localStorage.getItem('user_session_token');
+            
+            // अगर ब्राउज़र की मेमोरी में पहले से टोकन मौजूद है, तो सीधे होम पेज पर फेंक देना—लॉगिन दोबारा नहीं मांगेगा!
+            if (activeMobile && activeToken) {
+                window.location.href = '/home.html';
+            }
+        }
+        window.onload = checkActiveSessionInductionGuard;
+    </script>
+</body>
+</html>
