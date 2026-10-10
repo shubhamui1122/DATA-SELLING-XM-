@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA-SELLING-XM // CONTROL TOWER TERMINAL</title>
+    <style>
+        /* शुभम भाई का स्पेशल जेट ब्लैक बेस और साइबर पीले-इलेक्ट्रिक ब्लू नियॉन लुक का महा-तांडव */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
+        body { background-color: #000000; color: #ffbc00; padding-bottom: 95px; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .admin-brand-header { background: #050508; border-bottom: 2px solid #ffbc00; padding: 15px 20px; text-align: center; box-shadow: 0 4px 15px rgba(255,188,0,0.15); }
+        .admin-brand-title { font-size: 13px; font-weight: 900; letter-spacing: 2px; color: #ffffff; text-shadow: 0 0 8px #ffbc00; text-transform: uppercase; }
+        
+        /* कड़ा ऑपरेटर लॉगिन गेट (ताला दीवार) */
+        .admin-gate-auth-wall { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .auth-gate-card { background: #05050c; border: 2px solid #00f0ff; border-radius: 16px; padding: 40px 30px; width: 100%; max-width: 410px; text-align: center; box-shadow: 0 0 30px rgba(0,240,255,0.2); }
+        
+        .admin-input-block { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+        .admin-input-block label { font-size: 9.5px; letter-spacing: 1px; color: #52527a; text-transform: uppercase; font-weight: bold; }
+        .admin-text-field { width: 100%; background: #000000; border: 1px solid #1a1a2e; padding: 14px; border-radius: 8px; color: #00ffcc; font-size: 13px; font-weight: bold; outline: none; transition: all 0.3s; }
+        .admin-text-field:focus { border-color: #ffbc00; }
+        
+        .admin-gate-submit-btn { width: 100%; background: #00f0ff; color: #000000; border: none; padding: 15px; font-size: 12px; font-weight: 900; letter-spacing: 2px; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,240,255,0.2); }
+        .admin-gate-submit-btn:hover { background: #ffffff; }
+
+        /* मुख्य प्रशासनिक वर्कस्पेस कार्ड्स */
+        .admin-workspace-pane-container { flex: 1; overflow-y: auto; padding: 20px 16px; display: none; }
+        .pane-active-induction { display: block; animation: paneSlideUp 0.3s ease; }
+        @keyframes paneSlideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .pane-card-widget { background: #05050c; border: 1px solid #1a1a2e; border-radius: 12px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); text-align: left; }
+        .pane-card-headline { font-size: 11px; letter-spacing: 1.5px; color: #ffbc00; font-weight: 900; text-transform: uppercase; margin-bottom: 16px; border-left: 3px solid #ffbc00; padding-left: 8px; }
+        /* 💬 १. [ Customer Problems ] व्हाट्सएप फुल-स्क्रीन साफ सफेद लाइव चैट विंडो */
+        .whatsapp-fullscreen-modal-view { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 4500; flex-direction: column; color: #000000; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .whatsapp-header-node-bar { background: #075e54; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; color: #ffffff; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .whatsapp-header-title { font-size: 14px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+        .whatsapp-close-trigger-btn { background: #128c7e; color: #ffffff; border: none; padding: 8px 14px; font-size: 11px; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
+        
+        .whatsapp-message-scroll-matrix { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; background: #efeae2; }
+        .whatsapp-chat-bubble { max-width: 75%; padding: 10px 14px; border-radius: 8px; font-size: 13.5px; line-height: 1.4; font-weight: 500; position: relative; }
+        .bubble-user-incoming { background: #ffffff; align-self: flex-start; box-shadow: 0 1px 1px rgba(0,0,0,0.1); color: #000000; }
+        .bubble-worker-outgoing { background: #dcf8c6; align-self: flex-end; box-shadow: 0 1px 1px rgba(0,0,0,0.1); color: #000000; }
+        .bubble-meta-identity { font-size: 9px; font-weight: bold; color: #667781; margin-bottom: 3px; text-transform: uppercase; }
+        
+        .whatsapp-footer-input-row { background: #f0f2f5; padding: 12px 16px; display: flex; gap: 12px; align-items: center; border-top: 1px solid #e3e6e7; }
+        .whatsapp-text-field { flex: 1; background: #ffffff; border: 1px solid #ffffff; padding: 12px 16px; border-radius: 20px; color: #000000; font-size: 13.5px; font-weight: 600; outline: none; }
+        .whatsapp-send-action-btn { background: #075e54; color: #ffffff; border: none; padding: 12px 22px; font-size: 11.5px; font-weight: bold; border-radius: 20px; cursor: pointer; text-transform: uppercase; }
+
+        .chat-audit-decision-strip { display: flex; gap: 10px; padding: 10px 16px; background: #e3e6e7; border-top: 1px solid #d1d5d6; }
+        .audit-action-trigger-btn { flex: 1; padding: 12px; font-size: 11px; font-weight: 900; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; transition: all 0.2s; }
+        .btn-trigger-success { background: #25d366; color: #ffffff; }
+        .btn-trigger-reject { background: #ff3366; color: #ffffff; }
+
+        /* सब-एडमिन का ६-बटन यूनिवर्सल बॉटम बार फिक्स पट्टी (International English) */
+        .admin-sticky-navbar-array { position: fixed; bottom: 0; left: 0; width: 100%; background: #050508; border-top: 2px solid #1a1a2e; display: flex; height: 75px; z-index: 4000; box-shadow: 0 -10px 30px rgba(0,0,0,0.6); }
+        .admin-nav-item-tab { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #4e4e70; text-decoration: none; font-size: 8px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase; gap: 4px; cursor: pointer; }
+        .admin-nav-item-tab.tab-active { color: #ffbc00; text-shadow: 0 0 8px rgba(255,188,0,0.3); }
+        .admin-nav-item-tab span { font-size: 16px; }
+        
+        .decrypted-pane-view { display: none; background: #000000; border: 1px dashed #00f0ff; padding: 16px; border-radius: 6px; margin-top: 15px; font-size: 12.5px; line-height: 1.8; color: #00ffcc; text-align: left; }
+        .bilingual-admin-toast { display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); padding: 15px 24px; border-radius: 8px; font-size: 11.5px; font-weight: bold; z-index: 10000; line-height: 1.4; max-width: 90%; width: 420px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
+    </style>
+</head>
+<body>
+
+    <div class="admin-brand-header">
+        <div class="admin-brand-title">🏴‍☠️ [ DATA-SELLING-XM ADMINISTRATIVE HUB ] 🏴‍☠️</div>
+    </div>
+    <!-- कड़ा ऑपरेटर लॉगिन गेट -->
+    <div class="admin-gate-auth-wall" id="worker-auth-overlay-wall">
+        <div class="auth-gate-card">
+            <div style="font-size:36px; margin-bottom:15px;">🔐</div>
+            <h2 style="font-size:14px; letter-spacing:2px; text-transform:uppercase; margin-bottom:25px; color:#ffffff;">Worker Induction Terminal</h2>
+            <div class="admin-input-block">
+                <label>Registered Mobile Node</label>
+                <input type="tel" id="auth-worker-mobile" class="admin-text-field" placeholder="ENTER WORKER MOBILE NUMBER">
+            </div>
+            <div class="admin-input-block" style="margin-bottom:25px;">
+                <label>Security Access PIN</label>
+                <input type="password" id="auth-worker-pin" class="admin-text-field" placeholder="••••••••">
+            </div>
+            <button class="admin-gate-submit-btn" onclick="executeWorkerGatewayLoginOverride()">Unlock Terminal</button>
+            <div id="auth-gate-error-log" style="color:#ff3366; font-size:11px; font-weight:bold; margin-top:15px; display:none; text-transform:uppercase; letter-spacing:0.5px;">⚠️ Incorrect PIN. / आपका पासवर्ड गलत है। कृपया सहायता के लिए एडमिन से संपर्क करें।</div>
+        </div>
+    </div>
+
+    <!-- BUTTON 1: [ PROBLEMS ] (व्हाट्सएप लाइव चैट) -->
+    <div class="admin-workspace-pane-container pane-active-induction" id="pane-problems">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">💬 User Dispute Tickets [ Customer Problems ]</div>
+            <div id="tickets-central-grid-stream" style="display:flex; flex-direction:column; gap:12px;">
+                <div style="background:#000; border:1px solid #1a1a2e; padding:15px; border-radius:6px; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <div style="font-size:12px; font-weight:bold; color:#fff;">User Node ID: #8421</div>
+                        <div style="font-size:10px; color:#52527a; margin-top:3px; text-transform:uppercase;">Dispute: Withdrawal Stuck</div>
+                    </div>
+                    <button class="admin-gate-submit-btn" style="width:auto; padding:8px 16px; font-size:10.5px;" onclick="openWhatsAppFullscreenModal('User Node ID: #8421')">Open WhatsApp Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUTTON 2: [ TRACK ] (जासूसी रिमोट) -->
+    <div class="admin-workspace-pane-container" id="pane-track">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">🕵️‍♂️ User Profile Decryption Engine [ User Track Remote ]</div>
+            <div class="admin-input-block">
+                <label>Target User Registered Mobile or UID</label>
+                
+            </div>
+            <button class="admin-gate-submit-btn" onclick="executeUserTrackRemoteDecrypt()">Execute Decrypt Matrix 💀</button>
+            <div class="decrypted-pane-view" id="spy-remote-result-pane"></div>
+        </div>
+    </div>
+
+    <!-- BUTTON 3: [ RESET ] (बिना OTP का रिमोट रीसेट) -->
+    <div class="admin-workspace-pane-container" id="pane-reset">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">🔑 Remote Password Override Panel [ Password Reset ]</div>
+            <div class="admin-input-block">
+                <label>Target User Mobile Number</label>
+                <input type="tel" id="reset-target-mobile" class="admin-text-field" placeholder="Enter client mobile node string...">
+            </div>
+            <div class="admin-input-block">
+                <label>Set New Password PIN</label>
+                <input type="password" id="reset-new-pin" class="admin-text-field" placeholder="Enter 4 or 6 digit new PIN string...">
+            </div>
+            <button class="admin-gate-submit-btn" style="background:#ffbc00; color:#000;" onclick="executeRemotePasswordResetInject()">Apply Remote Override 🔐</button>
+        </div>
+    </div>
+
+    <!-- BUTTON 4: [ COMPLAINT ] (वर्कर्स की शिकायत टनल) -->
+    <div class="admin-workspace-pane-container" id="pane-complaint">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">🏴‍☠️ Internal Escalation Node [ Owner Complaint ]</div>
+            <div class="admin-input-block">
+                <label>Type Report Narrative (Direct To Owner Panel)</label>
+                <textarea id="complaint-raw-text" class="admin-text-field" style="height:110px; resize:none;" placeholder="Type internal staff problem packets..."></textarea>
+            </div>
+            <button class="admin-gate-submit-btn" style="background:#ff3366; color:#fff;" onclick="executeComplaintToOwnerTransmit()">Transmit Packet To King 💀</button>
+        </div>
+    </div>
+
+    <!-- BUTTON 5: [ ORDERS ] (मालिक का आदेश कक्ष) -->
+    <div class="admin-workspace-pane-container" id="pane-orders">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">📢 Supreme Commands Feed [ Owner Announcement ]</div>
+            <div style="background:#000; border:1px dashed #ffbc00; padding:15px; border-radius:6px; color:#ffffff; font-size:11.5px; line-height:1.5; font-weight:bold;">
+                ⚠️ [ LIVE ORDER ]: Keep monitoring Ballia sector withdrawal pipes. Ensure zero data leakage loop. <br>
+                <span style="font-size:9.5px; color:#52527a; display:block; margin-top:8px;">Issued By: SUPREME NETWORK COMMANDER: Shubham Kumar Shah 😎</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUTTON 6: [ AD BLAST ] (10s विज्ञापन ब्लास्टर लॉन्चर) -->
+    <div class="admin-workspace-pane-container" id="pane-adblast">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">🚀 Global Traffic Interceptor [ Live Ads Manager ]</div>
+            <div class="admin-input-block">
+                <label>Select Promo Image Packet (From Gallery)</label>
+                <input type="file" id="ad-image-file" class="admin-text-field" accept="image/*,video/*" style="padding:10px;">
+            </div>
+            <div class="admin-input-block">
+                <label>Custom Promotional Text Description Detail</label>
+                <input type="text" id="ad-custom-message" class="admin-text-field" placeholder="Enter detailed promotional headline text...">
+            </div>
+            <div class="admin-input-block">
+                <label>Target Channel Destination URL Link</label>
+                <input type="text" id="ad-target-channel-link" class="admin-text-field" value="https://t.me" readonly style="color:#52527a; cursor:not-allowed;">
+            </div>
+            <button class="admin-gate-submit-btn" style="background:linear-gradient(90deg, #ffbc00, #ff3366); color:#fff;" onclick="executeGlobalAdBlastTrigger()">TRIGGER GLOBAL AD BLAST 💀</button>
+        </div>
+    </div>
+    <!-- व्हाट्सएप-जैसी फुल-स्क्रीन साफ सफेद लाइव चैट विंडो (WhatsApp White Screen Modal) -->
+    <div class="whatsapp-fullscreen-modal-view" id="whatsapp-live-chat-modal">
+        <div class="whatsapp-header-node-bar">
+            <div class="whatsapp-header-title" id="whatsapp-chat-active-title">CUSTOMER SERVICE</div>
+            <button class="whatsapp-close-trigger-btn" onclick="closeWhatsAppFullscreenModal()">Back</button>
+        </div>
+        
+        <div class="whatsapp-message-scroll-matrix" id="whatsapp-message-scroll-box">
+            <div class="whatsapp-chat-bubble bubble-user-incoming">
+                👤 User Station Node</div>
+                <div>Bhai, maine cash out kiya par total balance zero dikha raha hai, ticket check karke solve kijiye live please! UTR screenshot attached.</div>
+            </div>
+        </div>
+        
+        <!-- काम: चैट बक्से के नीचे लगे कड़े जादुई Success / Reject बटन्स का लाइव पैनल -->
+        <div class="chat-audit-decision-strip">
+            <button class="audit-action-trigger-btn btn-trigger-success" onclick="executeHelpdeskTicketResolution('SUCCESS')">Success ✅</button>
+            <button class="audit-action-trigger-btn btn-trigger-reject" onclick="executeHelpdeskTicketResolution('REJECT')">Reject ❌</button>
+        </div>
+        
+        <div class="whatsapp-footer-input-row">
+            <input type="text" id="whatsapp-raw-msg-field" class="whatsapp-text-field" placeholder="Type message reply...">
+            <button class="whatsapp-send-action-btn" onclick="executeWhatsAppTextReplySend()">Send</button>
+        </div>
+    </div>
+
+    <!-- सब-एडमिन का ६-बटन यूनिवर्सल बॉटम बार फिक्स पट्टी (International English) -->
+    <div class="admin-sticky-navbar-array" id="worker-bottom-navbar" style="display:none;">
+        <div class="admin-nav-item-tab tab-active" onclick="switchAdministrativeTabPane('problems', this)"><span>💬</span>PROBLEMS</div>
+        <div class="admin-nav-item-tab" onclick="switchAdministrativeTabPane('track', this)"><span>🕵️‍♂️</span>TRACK</div>
+        <div class="admin-nav-item-tab" onclick="switchAdministrativeTabPane('reset', this)"><span>🔑</span>RESET</div>
+        <div class="admin-nav-item-tab" onclick="switchAdministrativeTabPane('complaint', this)"><span>🏴‍☠️</span>COMPLAINT</div>
+        <div class="admin-nav-item-tab" onclick="switchAdministrativeTabPane('orders', this)"><span>📢</span>ORDERS</div>
+        <div class="admin-nav-item-tab" onclick="switchAdministrativeTabPane('adblast', this)"><span>🚀</span>AD BLAST</div>
+    </div>
+
+    <div class="bilingual-admin-toast" id="admin-bilingual-toast"></div>
+    <script>
+        let administrativeTokenMobile = '';
+
+        function fireAdminToast(en, hi, isSuccess) {
+            const toast = document.getElementById('admin-bilingual-toast');
+            toast.innerHTML = `<div>${en}</div><div style="font-size:10px;color:#ffbc00;margin-top:4px;">${hi}</div>`;
+            toast.style.display = 'block';
+            if (isSuccess) {
+                toast.style.background = 'rgba(5,30,15,0.98)'; toast.style.border = '1px solid #00ff66'; toast.style.color = '#00ff66';
+            } else {
+                toast.style.background = 'rgba(30,5,10,0.98)'; toast.style.border = '1px solid #ff3366'; toast.style.color = '#ff3366';
+            }
+            setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        }
+
+        async function executeWorkerGatewayLoginOverride() {
+            const mobile = document.getElementById('auth-worker-mobile').value.trim();
+            const pin = document.getElementById('auth-worker-pin').value.trim();
+            
+            try {
+                const response = await fetch('/api/worker/gateway-auth', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ mobile, pin })
+                });
+                if (!response.ok) {
+                    const err = document.getElementById('auth-wall-error-log');
+                    err.style.display = 'block'; setTimeout(() => { err.style.display = 'none'; }, 4000);
+                } else {
+                    administrativeTokenMobile = mobile;
+                    document.getElementById('worker-lock-overlay-wall').style.display = 'none';
+                    document.getElementById('worker-bottom-navbar').style.display = 'flex';
+                    fireAdminToast("AUTHENTICATION VERIFIED. NODE PRIVILEGES ACTIVE.", "प्रमाणीकरण सफल। प्रशासनिक कमान चैनल सक्रिय।", true);
+                }
+            } catch(e){}
+        }
+
+        function switchAdministrativeTabPane(paneId, tabElement) {
+            document.querySelectorAll('.admin-workspace-pane-container').forEach(p => p.classList.remove('pane-active-induction'));
+            document.getElementById(`pane-${paneId}`).classList.add('pane-active-induction');
+            
+            document.querySelectorAll('.admin-nav-item-tab').forEach(t => t.classList.remove('tab-active'));
+            tabElement.classList.add('tab-active');
+        }
+
+        function openWhatsAppFullscreenModal(title) {
+            document.getElementById('whatsapp-live-chat-modal').style.display = 'flex';
+        }
+        function closeWhatsAppFullscreenModal() {
+            document.getElementById('whatsapp-live-chat-modal').style.display = 'none';
+        }
+
+        function executeWhatsAppTextReplySend() {
+            const input = document.getElementById('whatsapp-raw-msg-field');
+            if(!input.value.trim()) return;
+            const box = document.getElementById('whatsapp-message-scroll-box');
+            const bubble = document.createElement('div');
+            bubble.className = "whatsapp-chat-bubble bubble-worker-outgoing";
+            bubble.innerHTML = `⚙️ CUSTOMER SERVICE AGENT</div><div>${input.value}</div>`;
+            box.appendChild(bubble);
+            box.scrollTop = box.scrollHeight;
+            input.value = '';
+        }
+
+        function executeHelpdeskTicketResolution(status) {
+            fireAdminToast(`TICKET RESOLVED AS ${status} STATE.`, `शिकायत का समाधान सफलतापूर्वक दर्ज कर लिया गया है।`, true);
+            closeWhatsAppFullscreenModal();
+        }
+
+        // काम: जासूसी रिमोट काउंटर - UID/नंबर डालते ही पूरी कुंडली स्क्रीन पर डिक्रिप्ट करना!
+        async function executeUserTrackRemoteDecrypt() {
+            const identity = document.getElementById('spy-target-identity').value.trim();
+            if(!identity) return;
+            const pane = document.getElementById('spy-remote-result-pane');
+            
+            try {
+                const res = await fetch(`/api/worker/spy-uid-scanner?targetUID=${identity}`);
+                const data = await res.json();
+                
+                if(!res.ok) {
+                    // अगर UID नहीं मिली, तो नंबर मानकर दोबारा ट्रिगर आजमाना
+                    const fallbackRes = await fetch(`/api/user/vault-profile?mobile=${identity}`);
+                    const fbData = await fallbackRes.json();
+                    if(!fallbackRes.ok) {
+                        return fireAdminToast("TARGET INDUCTION NODE NOT FOUND.", "त्रुटि: डेटाबेस तिजोरी में यह यूजर रिकॉर्ड नहीं मिला।", false);
+                    }
+                    pane.innerHTML = `
+                        <div>🔓 [ DECRYPTED PROFILE MATRIX ]</div>
+                        <div>🔐 DECRYPTED PASSWORD: <span style="color:#ffffff;">${fbData.password || 'MAPPED'}</span></div>
+                        <div>💰 LIVE WALLET BALANCE: <span style="color:#00ff66;">₹${fbData.balance.toFixed(2)}</span></div>
+                        <div>📊 LIFETIME SHARED DATA: <span style="color:#ffbc00;">${fbData.lifetime_shared_data_gb.toFixed(2)} GB</span></div>
+                    `;
+                } else {
+                    pane.innerHTML = `
+                        <div>🔓 [ DECRYPTED PROFILE MATRIX ]</div>
+                        <div>🔐 DECRYPTED PASSWORD: <span style="color:#ffffff;">EXTRACTED</span></div>
+                        <div>💰 LIVE WALLET BALANCE: <span style="color:#00ff66;">${data.wallet_balance_amt}</span></div>
+                        <div>📊 LIFETIME SHARED DATA: <span style="color:#ffbc00;">${data.total_data_transferred_sold}</span></div>
+                    `;
+                }
+                pane.style.display = 'block';
+                fireAdminToast("DECRYPTION INTEGRITY SYNC COMPLETED.", "डेटा सफलतापूर्वक डिक्रिप्ट करके कुंडली स्क्रीन पर खोल दी गई है।", true);
+            } catch(e){}
+        }
+
+        // काम: बिना किसी ओटीपी के खर्चे के सीधे पासवर्ड रिमोटली रीसेट करना
+        async function executeRemotePasswordResetInject() {
+            const mob = document.getElementById('reset-target-mobile').value.trim();
+            const pin = document.getElementById('reset-new-pin').value.trim();
+            if(!mob || !pin) return;
+
+            try {
+                const res = await fetch('/api/worker/password-override', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ mobile: mob, new_pin: pin })
+                });
+                if(res.ok) {
+                    fireAdminToast("PASSWORD TERMINAL RESET COMPLETED OVERRIDE.", "बधाई हो! पासवर्ड बिना किसी ओटीपी के सफलतापूर्वक बदल दिया गया है।", true);
+                    document.getElementById('reset-target-mobile').value = '';
+                    document.getElementById('reset-new-pin').value = '';
+                }
+            } catch(e){}
+        }
+
+        function executeComplaintToOwnerTransmit() {
+            fireAdminToast("REPORT MOUNTED TO ENCRYPTED ESCROW PANE.", "शिकायत पैकेट सफलतापूर्वक मालिक (Owner) पैनल में भेज दिया गया है।", true);
+            document.getElementById('complaint-raw-text').value = '';
+        }
+
+        function executeGlobalAdBlastTrigger() {
+            fireAdminToast("ADS MISSILE DEPLOYED TO ALL USER CHANNELS.", "विज्ञापन महा-ब्लास्ट सफलतापूर्वक सभी लाइव यूजर्स की स्क्रीन पर उड़ा दिया गया है।", true);
+        }
+    </script>
+</body>
+</html>
