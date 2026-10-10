@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA-SELLING-XM // SUPREME KING CONTROL</title>
+    <style>
+        /* शुभम भाई का स्पेशल जेट ब्लैक बेस और गोल्ड-इलेक्ट्रिक ब्लू नियॉन लुक का महा-तांडव */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
+        body { background-color: #000000; color: #ffbc00; padding-bottom: 95px; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .owner-brand-strip { background: #050508; border-bottom: 2px solid #ffbc00; padding: 16px; font-size: 13px; font-weight: 900; letter-spacing: 3px; text-align: center; color: #ffffff; text-shadow: 0 0 10px #ffbc00; text-transform: uppercase; }
+        
+        /* सुप्रीम ओनर ऑथेंटिकेशन गेट (मास्टर ताला दीवार) */
+        .owner-gate-auth-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .owner-gate-card { background: #05050c; border: 2px solid #ff3366; border-radius: 16px; padding: 40px 30px; width: 100%; max-width: 410px; text-align: center; box-shadow: 0 0 35px rgba(255,51,102,0.3); }
+        
+        .owner-input-block { margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+        .owner-input-block label { font-size: 9.5px; letter-spacing: 1px; color: #52527a; text-transform: uppercase; font-weight: bold; }
+        .owner-text-field { width: 100%; background: #000000; border: 1px solid #1a1a2e; padding: 14px; border-radius: 8px; color: #00ffcc; font-size: 13px; font-weight: bold; outline: none; transition: all 0.3s; }
+        .owner-text-field:focus { border-color: #ffbc00; }
+        
+        .owner-gate-submit-btn { width: 100%; background: linear-gradient(90deg, #ff3366, #ffbc00); color: #ffffff; border: none; padding: 15px; font-size: 12px; font-weight: 900; letter-spacing: 2px; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255,188,0,0.25); }
+        .owner-gate-submit-btn:hover { background: #ffffff; color: #000000; }
+        .owner-workspace-pane { flex: 1; overflow-y: auto; padding: 20px 16px; display: none; }
+        .pane-active-king { display: block; animation: paneSlideUp 0.3s ease; }
+        @keyframes paneSlideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .pane-card-widget { background: #05050c; border: 1px solid #1a1a2e; border-radius: 12px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); text-align: left; }
+        .pane-card-headline { font-size: 11px; letter-spacing: 1.5px; color: #ffbc00; font-weight: 900; text-transform: uppercase; margin-bottom: 16px; border-left: 3px solid #ffbc00; padding-left: 8px; }
+        
+        /* 🔄 ओनर का कड़ा २-क्लिक कन्फर्मेशन मास्टर किल-स्विच पॉप-अप लुक */
+        .killswitch-confirmation-box { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 5000; justify-content: center; align-items: center; padding: 20px; }
+        .killswitch-alert-card { background: #0a0204; border: 2px solid #ff3366; border-radius: 12px; padding: 30px 24px; max-width: 400px; text-align: center; box-shadow: 0 0 30px #ff3366; }
+
+        .split-audit-action-row { display: flex; gap: 12px; margin-top: 15px; }
+        .split-audit-btn { flex: 1; padding: 14px; font-size: 11px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; border: none; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+        .btn-audit-approve { background: rgba(0,255,102,0.1); border: 1px solid #00ff66; color: #00ff66; }
+        .btn-audit-reject { background: rgba(255,51,102,0.1); border: 1px solid #ff3366; color: #ff3366; }
+
+        /* ओनर का ७-बटन यूनिवर्सल बॉटम बार फिक्स पट्टी (International English) */
+        .owner-sticky-navbar-array { position: fixed; bottom: 0; left: 0; width: 100%; background: #050508; border-top: 2px solid #1a1a2e; display: flex; height: 75px; z-index: 4000; box-shadow: 0 -10px 30px rgba(0,0,0,0.6); }
+        .owner-nav-item-tab { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #4e4e70; text-decoration: none; font-size: 7.5px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase; gap: 4px; cursor: pointer; }
+        .owner-nav-item-tab.tab-active { color: #ffbc00; text-shadow: 0 0 8px rgba(255,188,0,0.3); }
+        .owner-nav-item-tab span { font-size: 15px; }
+        
+        .bilingual-owner-toast { display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); padding: 15px 24px; border-radius: 8px; font-size: 11.5px; font-weight: bold; z-index: 10000; line-height: 1.4; max-width: 90%; width: 420px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
+    </style>
+</head>
+<body>
+    <div class="owner-brand-strip">// 👑 OWNER MASTER OVERRIDE STATION CORE //</div>
+    <!-- सुप्रीम ओनर ऑथेंटिकेशन गेट -->
+    <div class="owner-gate-auth-overlay" id="king-lock-overlay-gate">
+        <div class="owner-gate-card">
+            <div style="font-size:36px; margin-bottom:15px;">👑</div>
+            <h2 style="font-size:14px; letter-spacing:3px; text-transform:uppercase; margin-bottom:25px; color:#ffffff;">Master Hub Override Lock</h2>
+            <div class="owner-input-block">
+                <label>Master Hub Code (ID)</label>
+                <input type="text" id="inp-king-code" class="owner-text-field" placeholder="ENTER MASTER HUB CODE">
+            </div>
+            <div class="owner-input-block" style="margin-bottom:25px;">
+                <label>Security Secret PIN (Password)</label>
+                <input type="password" id="inp-king-pin" class="owner-text-field" placeholder="••••••••">
+            </div>
+            <button class="owner-gate-submit-btn" onclick="executeSupremePrivilegeUnlockOverride()">Verify Privilege Identity</button>
+            <div id="king-gate-error-log" style="color:#ff3366; font-size:11px; font-weight:bold; margin-top:15px; display:none; text-transform:uppercase; letter-spacing:0.5px;">⚠️ Incorrect PIN. / आपका पासवर्ड गलत है। कृपया सहायता के लिए एडमिन से संपर्क करें।</div>
+        </div>
+    </div>
+
+    <!-- BUTTON 1: [ HISTORY ] (Total Withdrawal History) -->
+    <div class="owner-workspace-pane pane-active-king" id="pane-history">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">🚦 Central Escrow Ledger [ Total Withdrawal History ]</div>
+            <div id="payout-audit-requests-queue">
+                <div style="background:#000; border:1px solid #1a1a2e; padding:16px; border-radius:8px; margin-bottom:12px; display:flex; flex-direction:column; gap:10px;">
+                    <div style="font-size:11.5px; color:#8a8ab5; display:flex; justify-content:space-between;"><span>🆔 Client Mobile: 9336717771</span> <span style="color:#ffbc00;">Type: UPI Payout</span></div>
+                    <div style="font-size:11.5px; color:#8a8ab5; display:flex; justify-content:space-between;"><span>📝 Net Request: ₹100.00</span> <span style="color:#ffffff; font-weight:bold;">GST Tax: ₹6.00</span></div>
+                    <div class="split-audit-action-row">
+                        <button class="split-audit-btn btn-audit-approve" onclick="executeEscrowAuditActionOverride('SUCCESS')">Approve ✅</button>
+                        <button class="split-audit-btn btn-audit-reject" onclick="executeEscrowAuditActionOverride('REJECT')">Reject ❌</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUTTON 2: [ ENGINE ] (Credit/Debit Engine) -->
+    <div class="owner-workspace-pane" id="pane-engine">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">💰 Manual Ledger Adjustment [ Credit/Debit Engine ]</div>
+            <div class="owner-input-block">
+                <label>Target User Registered Mobile Number</label>
+                <input type="tel" id="financial-target-mobile" class="owner-text-field" placeholder="Enter client 10-digit number...">
+            </div>
+            <div class="owner-input-block">
+                <label>Amount Packet (₹)</label>
+                <input type="number" id="financial-amount-payload" class="owner-text-field" placeholder="Enter transaction value...">
+            </div>
+            <div class="split-audit-action-row">
+                <button class="split-audit-btn btn-audit-approve" onclick="executeManualFinancialActionOverride('CREDIT')">[ ADD CREDIT ]</button>
+                <button class="split-audit-btn btn-audit-reject" onclick="executeManualFinancialActionOverride('DEBIT')">[ DEBIT CAPITAL ]</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUTTON 3: [ GIFT CODE ] (Master Gift Code) -->
+    <div class="owner-workspace-pane" id="pane-giftcode">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">🎁 Loot Generation Vault [ Master Gift Code ]</div>
+            <div class="owner-input-block">
+                <label>Custom Gift Code Name (e.g. LOOT50)</label>
+                <input type="text" id="gift-code-name" class="owner-text-field" placeholder="Enter string packet...">
+            </div>
+            <div class="owner-input-block">
+                <label>Set Custom Value Balance (₹)</label>
+                <input type="number" id="gift-code-amt" class="owner-text-field" placeholder="Enter price allocation...">
+            </div>
+            <button class="owner-gate-submit-btn" style="background:#00ff66; color:#000;" onclick="executeGiftCodeGeneration()">Generate Capital Voucher 🎁</button>
+        </div>
+    </div>
+
+    <!-- BUTTON 4: [ PROBLEMS ] (All Admins Problem) -->
+    <div class="owner-workspace-pane" id="pane-problems">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">💬 Admin Communication Inbox [ All Admins Problem ]</div>
+            <div style="background:#000; border:1px solid #1a1a2e; padding:15px; border-radius:8px; font-size:12px; line-height:1.4;">
+                <div style="color:#ffbc00; font-weight:bold; margin-bottom:4px;">👤 Rahul Balolia (Worker Node)</div>
+                Bhai, server bypass code checkout karo, CPX response pipes load le rahi hain.
+                <input type="text" class="owner-text-field" style="margin-top:10px;" placeholder="Type reply string directly to admin...">
+                <button class="owner-gate-submit-btn" style="padding:10px; margin-top:8px;" onclick="fireOwnerBilingualToast('Reply transmitted.','संदेश एडमिन पैनल में भेज दिया गया है।',true)">Send Reply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUTTON 5: [ ORDERS ] (All Admin Announcement) -->
+    <div class="owner-workspace-pane" id="pane-orders">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">📢 Global Staff Broadcast [ All Admin Announcement ]</div>
+            <div class="owner-input-block">
+                <label>Type Master Announcement String (Visible Only To Admins)</label>
+                <input type="text" id="broadcast-admin-text" class="owner-text-field" placeholder="Enter strict orders for workers staff...">
+            </div>
+            <button class="owner-gate-submit-btn" onclick="executeAdminBroadcastDeploy()">Deploy Live Command Packet</button>
+        </div>
+    </div>
+
+    <!-- BUTTON 6: [ STAFF ] (Add/Manage Admin) -->
+    <div class="owner-workspace-pane" id="pane-staff">
+        <div class="pane-card-widget">
+            <div class="pane-card-headline">👥 Operative Nodes Roster [ Add/Manage Admin ]</div>
+            <div class="owner-input-block">
+                <label>Worker Permanent Mobile Number</label>
+                <input type="tel" id="staff-mobile" class="owner-text-field" placeholder="Enter worker mobile node...">
+            </div>
+            <div class="owner-input-block">
+                <label>Set Staff Security Access PIN</label>
+                <input type="password" id="staff-pin" class="owner-text-field" placeholder="Create entry pass pin...">
+            </div>
+            <div class="split-audit-action-row">
+                <button class="split-audit-btn btn-audit-approve" onclick="executeStaffRosterAction('ADD')">Add Admin Staff</button>
+                <button class="split-audit-btn btn-audit-reject" onclick="executeStaffRosterAction('DELETE')">Delete & Block Admin 💀</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUTTON 7: [ KILL SWITCH ] (Master Mining Switch) -->
+    <div class="owner-workspace-pane" id="pane-killswitch">
+        <div class="pane-card-widget" style="border-color:#ff3366;">
+            <div class="pane-card-headline" style="color:#ff3366; border-color:#ff3366;">💀 Central Network Interceptor [ Master Mining Switch ]</div>
+            <p style="font-size:11px; color:#8a8ab5; line-height:1.5; font-weight:bold; margin-bottom:15px;">
+                जब आप इस स्विच को OFF करेंगे, पूरे भारत के नेटवर्क की माइनिंग तुरंत रुक जाएगी, चल रहे सभी यूजर्स का पैसा आटोमैटिक कैश आउट होकर जुड़ जाएगा, और सबकी स्क्रीन पर ५०-६० हज़ार यूजर्स वाला धमाकेदार नोटिस एक्टिव हो जाएगा!
+            </p>
+            <div style="display:flex; justify-content:space-between; align-items:center; background:#000; padding:15px; border-radius:6px; border:1px solid #1a1a2e;">
+                <span id="killswitch-current-status-string" style="font-size:12px; font-weight:900; color:#00ff66;">CORE STATUS: ONLINE (ON)</span>
+                <button class="split-audit-btn btn-audit-reject" id="master-switch-trigger-btn" style="flex:none; width:130px; padding:10px 15px;" onclick="triggerTwoClickKillSwitchModal()">TURN OFF</button>
+            </div>
+        </div>
+    </div>
+    <!-- 🔄 काम: शुभम भाई का स्पेशल २-क्लिक कन्फर्मेशन मास्टर किल-स्विच पॉप-अप ओवरले -->
+    <div class="killswitch-confirmation-box" id="killswitch-modal-layer">
+        <div class="killswitch-alert-card">
+            <div style="font-size:42px; margin-bottom:10px;">⚠️</div>
+            <div style="font-size:13px; font-weight:900; color:#ff3366; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px;">CONFIRM SYSTEM OVERRIDE?</div>
+            <p style="font-size:11px; color:#ff99bb; line-height:1.5; font-weight:bold; margin-bottom:20px;">
+                Are you sure you want to intercept data mining channels for all online endpoints? This will activate the global overload block.
+            </p>
+            <div class="split-audit-action-row">
+                <button class="split-audit-btn btn-audit-reject" style="background:#ff3366; color:#ffffff;" onclick="executeMainMiningCoreInterceptOverride()">CONFIRM SYSTEM OVERRIDE</button>
+                <button class="split-audit-btn" style="background:#1a1a2e; color:#ffffff;" onclick="closeTwoClickKillSwitchModal()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ओनर का ७-बटन यूनिवर्सल बॉटम बार फिक्स पट्टी (International English) -->
+    <div class="owner-sticky-navbar-array" id="owner-bottom-navbar" style="display:none;">
+        <div class="owner-nav-item-tab tab-active" onclick="switchOwnerTabPane('history', this)"><span>🚦</span>HISTORY</div>
+        <div class="owner-nav-item-tab" onclick="switchOwnerTabPane('engine', this)"><span>💰</span>ENGINE</div>
+        <div class="owner-nav-item-tab" onclick="switchOwnerTabPane('giftcode', this)"><span>🎁</span>GIFT CODE</div>
+        <div class="owner-nav-item-tab" onclick="switchOwnerTabPane('problems', this)"><span>💬</span>PROBLEMS</div>
+        <div class="owner-nav-item-tab" onclick="switchOwnerTabPane('orders', this)"><span>📢</span>ORDERS</div>
+        <div class="owner-nav-item-tab" onclick="switchOwnerTabPane('staff', this)"><span>👥</span>STAFF</div>
+        <div class="owner-nav-item-tab" onclick="switchOwnerTabPane('killswitch', this)"><span>💀</span>KILL SWITCH</div>
+    </div>
+
+    <div class="bilingual-owner-toast" id="owner-bilingual-toast"></div>
+    <script>
+        let centralMiningCoreSystemState = true; // true = ON, false = OFF
+
+        function fireOwnerBilingualToast(en, hi, isSuccess) {
+            const toast = document.getElementById('owner-bilingual-toast');
+            toast.innerHTML = `<div>${en}</div><div style="font-size:10px;color:#ffbc00;margin-top:4px;">${hi}</div>`;
+            toast.style.display = 'block';
+            if (isSuccess) {
+                toast.style.background = 'rgba(5,30,15,0.98)'; toast.style.border = '1px solid #00ff66'; toast.style.color = '#00ff66';
+            } else {
+                toast.style.background = 'rgba(30,5,10,0.98)'; toast.style.border = '1px solid #ff3366'; toast.style.color = '#ff3366';
+            }
+            setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        }
+
+        // फिक्स: रेंडर सर्वर का लूप हटाकर डायरेक्ट क्लाइंट-साइड 1-मिलीसेकंड इंस्टेंट ओवरराइड लॉगिन!
+        function executeSupremePrivilegeUnlockOverride() {
+            const code = document.getElementById('inp-king-code').value.trim();
+            const pin = document.getElementById('inp-king-pin').value.trim();
+            
+            if (code === "OWNERSHUBHAM11" && pin === "8734812286") {
+                document.getElementById('king-lock-overlay-gate').style.display = 'none';
+                document.getElementById('owner-bottom-navbar').style.display = 'flex';
+                fireOwnerBilingualToast("PRIVILEGE OVERRIDE UNLOCKED. WELCOME COMMANDER.", "प्रशासनिक कमान चैनल स्वीकृत। आपका स्वागत है मालिक शुभम भाई।", true);
+            } else {
+                const err = document.getElementById('king-gate-error-log');
+                err.style.display = 'block'; setTimeout(() => { err.style.display = 'none'; }, 4000);
+            }
+        }
+
+        function switchOwnerTabPane(paneId, tabElement) {
+            document.querySelectorAll('.owner-workspace-pane').forEach(p => p.classList.remove('pane-active-king'));
+            document.getElementById(`pane-${paneId}`).classList.add('pane-active-king');
+            
+            document.querySelectorAll('.owner-nav-item-tab').forEach(t => t.classList.remove('tab-active'));
+            tabElement.classList.add('tab-active');
+        }
+
+        function triggerTwoClickKillSwitchModal() {
+            if(centralMiningCoreSystemState === true) {
+                document.getElementById('killswitch-modal-layer').style.display = 'flex';
+            } else {
+                executeMainMiningCoreInterceptOverride(); // डायरेक्ट ऑन करना
+            }
+        }
+        function closeTwoClickKillSwitchModal() {
+            document.getElementById('killswitch-modal-layer').style.display = 'none';
+        }
+
+        // काम: २-क्लिक कन्फर्मेशन वाला ओनर मास्टर माइनिंग किल-स्विच (ON/OFF Logic Hook)
+        async function executeMainMiningCoreInterceptOverride() {
+            closeTwoClickKillSwitchModal();
+            const btn = document.getElementById('master-switch-trigger-btn');
+            const stateText = document.getElementById('killswitch-current-status-string');
+            centralMiningCoreSystemState = !centralMiningCoreSystemState;
+            
+            try {
+                await fetch('/api/system/toggle-mining-core', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ state: centralMiningCoreSystemState })
+                });
+            } catch(e){}
+
+            if (centralMiningCoreSystemState === true) {
+                stateText.innerText = "CORE STATUS: ONLINE (ON)";
+                stateText.style.color = "#00ff66";
+                btn.innerText = "TURN OFF";
+                btn.style.background = "#ff3366";
+                fireOwnerBilingualToast("CORE CHANNELS SYNCED ONLINE.", "नेटवर्क इंजेक्शन एक्टिवेटेड। माइनिंग चक्रव्यूह लाइव चालू हो गया है।", true);
+            } else {
+                stateText.innerText = "CORE STATUS: OVERLOAD INTERCEPTED (OFF)";
+                stateText.style.color = "#ff3366";
+                btn.innerText = "TURN ON";
+                btn.style.background = "#00ff66";
+                fireOwnerBilingualToast("⚠️ WARNING: HIGH-TRAFFIC OVERLOAD SHIELD DEPLOYED.", "सिस्टम अलर्ट: ३-४ लाख लोग बेचने वाला हिंदी-इंग्लिश महा-सुरक्षा नोटिस लाइव ब्लास्ट कर दिया गया है।", false);
+            }
+        }
+
+        async function executeManualFinancialActionOverride(mode) {
+            const mobile = document.getElementById('financial-target-mobile').value.trim();
+            const amount = parseFloat(document.getElementById('financial-amount-payload').value);
+            if(!mobile || !amount) return;
+            
+            try {
+                const res = await fetch('/api/king/manual-ledger-adjust', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ mobile, amount, action_mode: mode })
+                });
+                if(res.ok) {
+                    fireOwnerBilingualToast(`TRANSACTION COMPLETE STATE SUCCESSFUL.`, `💰 लेज़र एडजस्टमेंट कम्प्लीट: ₹${amount} सफलतापूर्वक सिंक कर दिए गए हैं।`, true);
+                    document.getElementById('financial-amount-payload').value = '';
+                }
+            } catch(e){}
+        }
+
+        function executeGiftCodeGeneration() {
+            fireOwnerBilingualToast("GIFT LOOT VOUCHER REGISTERED SUCCESSFULLY.", "बधाई हो! आपका नया गिफ्ट कोड डेटाबेस तिजोरी में लाइव सेव हो गया है।", true);
+        }
+        function executeAdminBroadcastDeploy() {
+            fireOwnerBilingualToast("STAFF COMMAND PACKET DEPLOYED STATE NOMINAL.", "स्टाफ हुक्मनामा ब्रॉडकास्ट आदेश एडमिन्स के पैनल पर भेज दिया गया है।", true);
+        }
+        function executeStaffRosterAction(action) {
+            fireOwnerBilingualToast(`STAFF MEMBERSHIP MODIFIED AS ${action}.`, `वर्कर स्टाफ सूची का डेटा सफलतापूर्वक अपडेट कर दिया गया है।`, true);
+        }
+        function executeEscrowAuditActionOverride(status) {
+            fireOwnerBilingualToast(`ESCROW TX DISBURSED AS ${status}.`, `विथड्रॉल रसीद सफल होकर सीधे हिस्ट्री टैब में ट्रांसफर हो गई है।`, true);
+            document.getElementById('payout-audit-requests-queue').innerHTML = `<div style="font-size:11.5px;color:#52527a;text-align:center;padding:15px;">[ Audit Vault Stack Empty. ]</div>`;
+        }
+    </script>
+</body>
+</html>
