@@ -1,0 +1,14 @@
+{
+  "name": "data-selling-xm",
+  "version": "1.0.0",
+  "description": "Supreme Core Net-Matrix Hub",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "author": "Shubham Kumar Shah",
+  "license": "ISC"
+}
