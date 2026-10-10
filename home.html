@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA-SELLING-XM // CYBER MINING CORE</title>
+    <style>
+        /* शुभम भाई का स्पेशल जेट ब्लैक बेस और साइबर येलो-इलेक्ट्रिक ब्लू नियॉन लुक */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
+        body { background-color: #000000; color: #00ffcc; padding-bottom: 95px; overflow-x: hidden; text-align: center; }
+        
+        /* 🟢 २४-घंटे धड़कने वाली लाइव हरी बत्ती */
+        .server-telemetry-strip { background: #050508; border-bottom: 2px solid #00f0ff; padding: 15px; display: flex; justify-content: center; align-items: center; gap: 12px; box-shadow: 0 0 15px rgba(0,240,255,0.2); }
+        .beacon-light-dot { width: 12px; height: 12px; background-color: #00ff66; border-radius: 50%; box-shadow: 0 0 12px #00ff66; animation: beaconPulse 1.2s infinite alternate; }
+        .beacon-text-node { font-size: 11px; letter-spacing: 2px; font-weight: 900; text-transform: uppercase; color: #00ff66; text-shadow: 0 0 5px rgba(0,255,102,0.5); }
+        @keyframes beaconPulse { 0% { opacity: 0.3; filter: drop-shadow(0 0 2px #00ff66); } 100% { opacity: 1; filter: drop-shadow(0 0 15px #00ff66); } }
+
+        .mainframe-wrapper { max-width: 460px; margin: 20px auto; padding: 0 16px; }
+        
+        /* 🔐 कड़क ऑफिशियल इंग्लिश सुरक्षा डिस्क्लेमर (AI Data Protection Card) */
+        .ai-disclaimer-terminal { background: #07070c; border: 1px solid #ffbc00; border-radius: 10px; padding: 16px; text-align: left; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(255,188,0,0.1); }
+        .disclaimer-headline { font-size: 11px; letter-spacing: 1.5px; color: #ffbc00; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        .disclaimer-body-text { font-size: 11px; color: #00ffcc; line-height: 1.5; font-weight: 600; }
+        /* 🛑 ३-४ लाख लोगों वाला हिंदी-इंग्लिश महा-सुरक्षा नोटिस पैनल */
+        .traffic-overload-shield-overlay { display: none; background: rgba(20,2,4,0.98); border: 2px solid #ff3366; border-radius: 12px; padding: 22px; margin-bottom: 20px; box-shadow: 0 0 25px rgba(255,51,102,0.3); text-align: left; animation: flashRedBorder 1s infinite alternate; }
+        .overload-header-node { font-size: 13px; font-weight: 900; color: #ff3366; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .overload-msg-packet { font-size: 11px; color: #ff99bb; line-height: 1.6; font-weight: bold; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed rgba(255,51,102,0.2); }
+        @keyframes flashRedBorder { 0% { border-color: #ff3366; box-shadow: 0 0 10px #ff3366; } 100% { border-color: #ff99bb; box-shadow: 0 0 25px #ff3366; } }
+
+        /* 📱 4G/5G/6G नेटवर्क स्पीड Diagnostic Bar */
+        .network-auto-detector-bar { background: #050508; border: 1px dashed #00f0ff; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 11px; letter-spacing: 1px; color: #00f0ff; text-transform: uppercase; font-weight: bold; }
+        .network-glow-string { color: #ffbc00; text-shadow: 0 0 8px rgba(255,188,0,0.5); }
+
+        /* मुख्य माइनिंग कोर डिस्प्ले ज़ोन */
+        .mining-display-vault { background: #05050c; border: 1px solid #1a1a2e; border-radius: 14px; padding: 35px 20px; min-height: 340px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 12px 35px rgba(0,0,0,0.9); position: relative; }
+        .welcome-brand-text { font-size: 14px; font-weight: 900; letter-spacing: 2px; color: #ffffff; margin-bottom: 25px; text-transform: uppercase; text-shadow: 0 0 8px rgba(0,240,255,0.3); }
+        /* 🔄 आधे लाल और आधे पीले रंग का प्रो मैक्स नियॉन प्रोग्रेस चक्रव्यूह */
+        .dual-neon-circle-frame { display: none; width: 185px; height: 190px; border-radius: 50%; border: 4px solid #05050c; position: relative; justify-content: center; align-items: center; margin-bottom: 25px; transition: all 0.5s ease; border-top-color: #ff3366; border-right-color: #ffbc00; border-bottom-color: #ff3366; border-left-color: #ffbc00; }
+        .circle-wave-emitter { position: absolute; width: 100%; height: 100%; border: 2px dashed #ffbc00; border-radius: 50%; display: none; }
+        .dual-neon-circle-frame.mining-running { animation: rotateRing 3s linear infinite; box-shadow: 0 0 35px #00ff66; border-color: #00ff66; }
+        .dual-neon-circle-frame.mining-running .circle-wave-emitter { display: block; border-color: #00ff66; }
+        @keyframes rotateRing { 100% { transform: rotate(360deg); } }
+
+        .counter-rotate-box { z-index: 10; display: flex; flex-direction: column; gap: 4px; }
+        .dual-neon-circle-frame.mining-running .counter-rotate-box { animation: counterRotate 3s linear infinite; }
+        @keyframes counterRotate { 100% { transform: rotate(-360deg); } }
+
+        .mb-live-digits { font-size: 26px; font-weight: 900; color: #ffffff; text-shadow: 0 0 8px rgba(0,240,255,0.4); }
+        .inr-live-digits { font-size: 19px; font-weight: 900; color: #ffbc00; }
+
+        .utility-action-btn { background: #ffbc00; color: #000000; border: none; padding: 15px 30px; font-size: 12px; font-weight: 900; letter-spacing: 2px; border-radius: 6px; cursor: pointer; text-transform: uppercase; transition: all 0.3s ease; width: 100%; max-width: 280px; box-shadow: 0 4px 15px rgba(255,188,0,0.2); }
+        .utility-action-btn:hover { background: #ffffff; transform: translateY(-2px); }
+        .cashout-trigger-btn { display: none; background: #000000; color: #ff3366; border: 2px solid #ff3366; box-shadow: none; }
+        .cashout-trigger-btn:hover { background: #ff3366; color: #ffffff; box-shadow: 0 5px 20px rgba(255,51,102,0.4); }
+
+        /* 🎁 डेली स्क्रैच कार्ड डिब्बा (५ रेफ़रल वाले कड़े लॉक स्टाइल के साथ) */
+        .scratch-card-vault-box { background: #07070c; border: 1px dashed #ffbc00; border-radius: 10px; padding: 18px; margin-top: 25px; text-align: center; display: none; box-shadow: 0 4px 15px rgba(255,188,0,0.05); }
+        .scratch-pad-surface { background: #141424; width: 100%; max-width: 240px; height: 80px; margin: 12px auto 0 auto; border-radius: 6px; display: flex; justify-content: center; align-items: center; font-size: 11px; font-weight: bold; color: #ffbc00; cursor: pointer; border: 2px dashed #ffbc00; text-transform: uppercase; }
+
+        /* यूनिवर्सल फिक्स ४-बटन स्टिकी मेनू (Sticky Bottom Menu) बाएँ से दाएँ फिक्स क्रम */
+        .bottom-sticky-navbar { position: fixed; bottom: 0; left: 0; width: 100%; background: #050508; border-top: 2px solid #131322; display: flex; height: 75px; z-index: 4000; }
+        .navbar-item-link { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #4e4e70; text-decoration: none; font-size: 9.5px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; gap: 4px; }
+        .navbar-item-link.active-tab { color: #ffbc00; text-shadow: 0 0 8px rgba(255,188,0,0.3); }
+        .navbar-item-link span { font-size: 18px; }
+
+        .bilingual-chroma-toast { display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); padding: 15px 24px; border-radius: 8px; font-size: 11.5px; font-weight: bold; z-index: 5000; line-height: 1.4; max-width: 90%; width: 420px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
+    </style>
+</head>
+<body>
+
+    <div class="server-telemetry-strip" id="master-live-status-bar">
+        <div class="beacon-light-dot" id="master-live-status-dot"></div>
+        <div class="beacon-text-node" id="master-live-status-text">🟢 STATUS: SERVER ONLINE // NODE INITIALIZED</div>
+    </div>
+    <div class="mainframe-wrapper">
+        <!-- ओनर का मास्टर ट्रैफिक ओवरलोड किल-स्विच कंटेनर -->
+        <div class="traffic-overload-shield-overlay" id="overload-system-shield">
+            <div class="overload-header-node">⚠️ SYSTEM BREAK ERROR // सिस्टम एरर 💀</div>
+            <p class="overload-msg-packet">
+                ⚠️ SYSTEM ALERT: SIMULTANEOUS TRAFFIC DETECTED. CURRENTLY, 300,000 TO 400,000 USERS ARE SELLING DATA SIMULTANEOUSLY THROUGH THEIR NODES. REGISTRATION OF NEW ORDERS HAS BEEN PAUSED BY THE ADMINISTRATION. PLEASE WAIT A FEW MINUTES AND TRY AGAIN.
+            </p>
+            <p class="overload-msg-packet" style="color:#ffbc00; border:none;">
+                ⚠️ सिस्टम अलर्ट: अत्यधिक ट्रैफ़िक पाया गया है। इस समय ३ से ४ लाख लोग एक साथ अपने नोड्स से डेटा सेल कर रहे हैं, इसीलिए हमारे एडमिनिस्ट्रेशन ने नए ऑर्डर्स को कुछ समय के लिए बंद कर दिया है। कृपया थोड़ी देर प्रतीक्षा करें और दोबारा प्रयास करें।
+            </p>
+        </div>
+
+        <!-- कड़क एआई सुरक्षा घोषणा पट्टी (English AI Disclaimer) -->
+        <div class="ai-disclaimer-terminal" id="ai-announcement-card">
+            <div class="disclaimer-headline">🔐 SECURE DATA INDUCTION ENVIRONMENT 🔐</div>
+            <p class="disclaimer-body-text">
+                🚀 NETWORK INFRASTRUCTURE: UNUSED 5G/4G DATA BLOCK IS SUCCESSFULLY SOLD TO THE CENTRAL UTILITY CORE FOR SECURE AI PRODUCT TRAINING. PERSONAL LOGS ARE 100% ENCRYPTED & SAFE.
+            </p>
+        </div>
+
+        <div class="network-auto-detector-bar" id="bandwidth-diagnostic-panel">
+            Terminal Uplink: <span class="network-glow-string" id="hardware-connection-state">Detecting Topology Node...</span> // Encryption Balanced
+        </div>
+
+        <!-- मुख्य डेटा माइनिंग कोर डिस्प्ले ज़ोन -->
+        <div class="mining-display-vault" id="mining-terminal-display-zone">
+            <div class="welcome-brand-text" id="welcome-label-node">🏴‍☠️ [ DATA-SELLING-XM TERMINAL ] 🏴‍☠️</div>
+            
+            <!-- आधे लाल और आधे पीले रंग का गोल चक्र -->
+            <div class="dual-neon-circle-frame" id="quantum-progress-ring">
+                <div class="circle-wave-emitter"></div>
+                <div class="counter-rotate-box">
+                    <div class="mb-live-digits"><span id="metric-live-mb">0.00</span> MB</div>
+                    <div class="inr-live-digits">₹<span id="metric-live-inr">0.00</span></div>
+                </div>
+            </div>
+            
+            <!-- कड़क डबल-स्टार्ट कंट्रोल बटन्स -->
+            <button class="utility-action-btn" id="trigger-mining-btn" onclick="executeFirstStageActivation()">Start Application</button>
+            <button class="utility-action-btn cashout-trigger-btn" id="trigger-cashout-btn" onclick="executeMainWalletCashOut()">Cash Out</button>
+        </div>
+
+        <!-- 🎁 डेली स्क्रैच कार्ड डिब्बा (सिर्फ ५ रेफ़रल करने वालों के लिए १ हफ़्ते के लिए लाइव होना) -->
+        <div class="scratch-card-vault-box" id="scratch-card-vault-container">
+            <div style="font-size:11px; font-weight:900; color:#ffbc00; letter-spacing:1px;">🎁 ACTIVE WEEKLY PRIVILEGE SCRATCH CARD</div>
+            <div class="scratch-pad-surface" id="scratch-surface-node" onclick="executeDailyScratchClaimOverride()">Tap To Scratch Card 👋</div>
+        </div>
+    </div>
+
+    <!-- यूनिवर्सल फिक्स ४-बटन स्टिकी मेनू बाएँ से दाएँ फिक्स क्रम में और तुम्हारा असली डबल XX लिंक -->
+    <div class="bottom-sticky-navbar">
+        <a href="/home.html" class="navbar-item-link active-tab"><span>🏠</span>Home</a>
+        <a href="/surveys.html" class="navbar-item-link"><span>📋</span>Surveys</a>
+        <a href="#" class="navbar-item-link" onclick="window.open('https://t.me/DATASELLINGXX', '_blank')"><span>✈️</span>Promotion</a>
+        <a href="/account.html" class="navbar-item-link"><span>👤</span>Account</a>
+    </div>
+
+    <div class="bilingual-chroma-toast" id="global-bilingual-toast"></div>
+    <script>
+        let operationalInterval = null;
+        let runningSessionMB = 0.00;
+        let runningSessionINR = 0.00;
+        let appStageInitialized = false;
+        let coreMiningExecution = false;
+        const targetMobileUser = localStorage.getItem('user_session_mobile') || '9336717771';
+
+        function fireBilingualToast(msgEn, msgHi, isSuccess) {
+            const toast = document.getElementById('global-bilingual-toast');
+            toast.innerHTML = `<div>${msgEn}</div><div style="font-size:10px;color:#ffbc00;margin-top:4px;">${msgHi}</div>`;
+            toast.style.display = 'block';
+            if (isSuccess) {
+                toast.style.background = 'rgba(5,30,15,0.98)'; toast.style.border = '1px solid #00ff66'; toast.style.color = '#00ff66';
+            } else {
+                toast.style.background = 'rgba(30,5,10,0.98)'; toast.style.border = '1px solid #ff3366'; toast.style.color = '#ff3366';
+            }
+            setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        }
+
+        // पहला क्लिक काम
+        function executeFirstStageActivation() {
+            if (!appStageInitialized) {
+                document.getElementById('welcome-label-node').style.display = 'none';
+                const ring = document.getElementById('quantum-progress-ring');
+                ring.style.display = 'flex';
+                document.getElementById('trigger-mining-btn').innerText = 'Launch Active Mining';
+                appStageInitialized = true;
+                fireBilingualToast("SYSTEM: NODE TERMINAL INITIALIZED. READY FOR INJECTION.", "सिस्टम: नोड टर्मिनल प्रारंभ हो गया है। डेटा ट्रांसफर के लिए तैयार।", true);
+            } else {
+                executeSecondStageMining();
+            }
+        }
+
+        // दूसरा क्लिक काम
+        async function executeSecondStageMining() {
+            try {
+                const check = await fetch('/api/system/override-check');
+                const state = await check.json();
+                if (state && state.override_active === true) {
+                    lockEntireMiningForTrafficOverload();
+                    return;
+                }
+            } catch(e){}
+
+            if (coreMiningExecution) return;
+            coreMiningExecution = true;
+            
+            const statusDot = document.getElementById('master-live-status-dot');
+            const statusText = document.getElementById('master-live-status-text');
+            
+            statusDot.style.boxShadow = "0 0 20px #00ff66, 0 0 40px #00ff66";
+            statusText.innerText = "🟢 STATUS: INJECTOR ACTIVE // NODE CONNECTED";
+
+            const ring = document.getElementById('quantum-progress-ring');
+            ring.classList.add('mining-running');
+            document.getElementById('trigger-mining-btn').style.display = 'none';
+            document.getElementById('trigger-cashout-btn').style.display = 'block';
+
+            fireBilingualToast("DATA INJECTION STARTED. CAPTURING CHUNKS...", "डेटा सेलिंग चालू हो गई है। पैकेट्स ट्रांसफर हो रहे हैं...", true);
+
+            operationalInterval = setInterval(async () => {
+                runningSessionMB += 1.00;
+                const currentRatePerMB = localStorage.getItem('is_vip_tier') === 'true' ? 0.01171 : 0.00976;
+                runningSessionINR += currentRatePerMB;
+                
+                document.getElementById('metric-live-mb').innerText = runningSessionMB.toFixed(2);
+                document.getElementById('metric-live-inr').innerText = runningSessionINR.toFixed(2);
+                
+                if (runningSessionMB % 10 === 0) {
+                    try {
+                        const pulse = await fetch('/api/user/bandwidth-heartbeat', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ mobile: targetMobileUser })
+                        });
+                        if (!pulse.ok) {
+                            clearInterval(operationalInterval);
+                            lockEntireMiningForTrafficOverload();
+                        }
+                    } catch(e){}
+                }
+            }, 1500);
+        }
+
+        // इंस्टेंट कैश-आउट बटन का असली काम: दबाते ही 0.05 पैसे भी तुरंत बैलेंस में ऐड होना!
+        async function executeMainWalletCashOut() {
+            if (!coreMiningExecution) return;
+            clearInterval(operationalInterval);
+            coreMiningExecution = false;
+
+            try {
+                const res = await fetch('/api/user/commit-cashout', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        mobile: targetMobileUser,
+                        session_mb: runningSessionMB,
+                        session_earnings: runningSessionINR
+                    })
+                });
+                if(res.ok) {
+                    fireBilingualToast("🟢 Success! Your balance is successfully add.", "बधाई हो! आपका पैसा आपके वॉलेट बैलेंस में सफलतापूर्वक जोड़ दिया गया है।", true);
+                }
+            } catch(e){}
+
+            const statusDot = document.getElementById('master-live-status-dot');
+            const statusText = document.getElementById('master-live-status-text');
+            
+            statusText.innerText = "🟢 STATUS: SERVER ONLINE // NODE INITIALIZED";
+            statusDot.style.boxShadow = "0 0 12px #00ff66";
+
+            const ring = document.getElementById('quantum-progress-ring');
+            ring.classList.remove('mining-running');
+            ring.style.display = 'none';
+            
+            document.getElementById('trigger-cashout-btn').style.display = 'none';
+            document.getElementById('trigger-mining-btn').style.display = 'block';
+            document.getElementById('trigger-mining-btn').innerText = 'Start Application';
+            document.getElementById('welcome-label-node').style.display = 'block';
+            
+            appStageInitialized = false;
+
+            runningSessionMB = 0.00; runningSessionINR = 0.00;
+            document.getElementById('metric-live-mb').innerText = '0.00';
+            document.getElementById('metric-live-inr').innerText = '0.00';
+            checkScratchCardEligibilityOverride();
+        }
+
+        // काम: ५ रेफ़रल होने पर ही स्क्रैच कार्ड डिब्बे को १ हफ़्ते के लिए लाइव शो करना
+        async function checkScratchCardEligibilityOverride() {
+            try {
+                const response = await fetch(`/api/user/vault-profile?mobile=${targetMobileUser}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // कड़ा लॉक: अगर ५ रेफ़रल्स पूरे हैं, तभी कार्ड का डिस्प्ले ऑन करना!
+                    if (data.referrals >= 5) {
+                        const regTime = new Date(data.registration_date).getTime();
+                        const rightNow = new Date().getTime();
+                        const timeDifferenceDays = (rightNow - regTime) / (1000 * 60 * 60 * 24);
+                        
+                        // अगर १ हफ़्ते (7 दिन) से कम समय हुआ है, तभी दिखेगा, वरना हमेशा के लिए लॉक/गायब!
+                        if (timeDifferenceDays <= 7) {
+                            document.getElementById('scratch-card-vault-container').style.display = 'block';
+                        } else {
+                            document.getElementById('scratch-card-vault-container').style.display = 'none';
+                        }
+                    }
+                }
+            } catch(err){}
+        }
+
+        // डेली स्क्रैच कार्ड क्लेम फंक्शन - रोज फिक्स सिर्फ ₹1 मिलना
+        async function executeDailyScratchClaimOverride() {
+            try {
+                const res = await fetch('/api/user/claim-daily-scratch', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ mobile: targetMobileUser })
+                });
+                const data = await res.json();
+                if(res.ok) {
+                    document.getElementById('scratch-surface-node').innerText = "🎉 CLAIMED ₹1.00!";
+                    document.getElementById('scratch-surface-node').style.borderColor = "#00ff66";
+                    document.getElementById('scratch-surface-node').style.color = "#00ff66";
+                    fireBilingualToast("成功: ₹1.00 CREDITED VIA SCRATCH CARD.", "सफलता: स्क्रैच कार्ड बोनस ₹1 वॉलेट में जोड़ दिया गया है।", true);
+                } else {
+                    fireBilingualToast(data.error || "Already claimed.", "आप आज का स्क्रैच कार्ड इनाम पहले ही क्लेम कर चुके हैं।", false);
+                }
+            } catch(e){}
+        }
+
+        function lockEntireMiningForTrafficOverload() {
+            document.getElementById('overload-system-shield').style.display = 'block';
+            document.getElementById('ai-announcement-card').style.display = 'none';
+            document.getElementById('bandwidth-diagnostic-panel').style.display = 'none';
+            document.getElementById('mining-terminal-display-zone').style.display = 'none';
+            document.getElementById('scratch-card-vault-container').style.display = 'none';
+        }
+
+        if (navigator.connection) {
+            const netType = navigator.connection.effectiveType || '5G';
+            document.getElementById('hardware-connection-state').innerText = `JIO ${netType.toUpperCase()} CORE`;
+        }
+        
+        setInterval(async () => {
+            try {
+                const res = await fetch('/api/system/override-check');
+                const data = await res.json();
+                if(data && data.override_active === true) lockEntireMiningForTrafficOverload();
+            } catch(e){}
+        }, 4000);
+
+        window.onload = checkScratchCardEligibilityOverride;
+    </script>
+</body>
+</html>
