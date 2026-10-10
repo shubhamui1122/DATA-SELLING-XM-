@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA-SELLING-XM // CAPITAL VAULT</title>
+    <style>
+        /* शुभम भाई का स्पेशल जेट ब्लैक बेस और साइबर पीले-इलेक्ट्रिक ब्लू नियॉन हैकिंग थीम */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
+        body { background-color: #000000; color: #00f0ff; padding-bottom: 95px; overflow-x: hidden; text-align: center; }
+        
+        .header-brand-strip { background: #050508; border-bottom: 2px solid #00f0ff; padding: 18px; font-size: 12px; font-weight: 900; letter-spacing: 2px; color: #ffbc00; text-shadow: 0 0 8px rgba(255,188,0,0.4); text-transform: uppercase; }
+        
+        .workspace-wrapper { max-width: 460px; margin: 20px auto; padding: 0 16px; }
+        
+        /* 👑 हुबहू श्रीविन (ShreeWin) स्टाइल वीआईपी डार्क कार्ड अवतार */
+        .shreewin-profile-card { background: linear-gradient(135deg, #07070f 0%, #0c0c17 100%); border: 1px solid #00f0ff; border-radius: 16px; padding: 25px 20px; margin-bottom: 22px; box-shadow: 0 15px 40px rgba(0,0,0,0.9); text-align: left; position: relative; }
+        .shreewin-profile-card::before { content: '👑 VIP'; position: absolute; top: 12px; right: 16px; background: #ffbc00; color: #000000; font-size: 9px; font-weight: 900; padding: 3px 8px; border-radius: 20px; letter-spacing: 1px; box-shadow: 0 0 10px #ffbc00; }
+        
+        .profile-meta-row { margin-bottom: 15px; }
+        .user-phone-string { font-size: 16px; font-weight: 900; color: #ffffff; letter-spacing: 0.5px; }
+        .user-uid-badge { font-size: 11px; color: #00f0ff; font-weight: bold; margin-top: 4px; }
+        .level-badge-string { font-size: 10px; font-weight: 900; background: rgba(0,240,255,0.1); border: 1px solid #00f0ff; color: #00f0ff; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 6px; text-transform: uppercase; }
+        
+        .giant-balance-node { font-size: 38px; font-weight: 900; color: #ffbc00; margin-top: 10px; text-shadow: 0 0 15px rgba(255,188,0,0.3); }
+        
+        /* 📊 लाइफटाइम डेटा सेल डिस्प्ले (नियॉन ग्लोइंग पट्टी) */
+        .lifetime-data-glow-strip { background: #000000; border: 1px dashed #00ff66; padding: 12px; border-radius: 8px; margin-top: 15px; font-size: 11.5px; font-weight: bold; color: #00ff66; text-shadow: 0 0 8px rgba(0,255,102,0.4); text-align: center; }
+        /* 💳 स्मार्ट विथड्रॉल स्लॉट्स और स्वतंत्र बटन्स स्टाइल्स */
+        .section-vault-card { background: #05050c; border: 1px solid #1a1a2e; border-radius: 12px; padding: 22px; margin-bottom: 22px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .section-headline { font-size: 11px; letter-spacing: 1.5px; color: #ffbc00; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; border-left: 3px solid #ffbc00; padding-left: 8px; }
+        
+        .slot-selector-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+        .payout-slot-row { background: #000000; border: 1px solid #1a1a2e; padding: 14px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; }
+        .payout-slot-row.slot-active { border-color: #00f0ff; background: rgba(0,240,255,0.02); }
+        .slot-label-text { font-size: 12px; font-weight: bold; color: #ffffff; }
+        .slot-status-string { font-size: 9.5px; font-weight: 900; color: #8a8ab5; text-transform: uppercase; }
+        
+        .vault-input-field { width: 100%; background: #000000; border: 1px solid #1a1a2e; padding: 14px; border-radius: 6px; color: #00ffcc; font-size: 12.5px; font-weight: bold; outline: none; margin-top: 10px; }
+        .vault-input-field:focus { border-color: #00f0ff; }
+        
+        .vault-submit-btn { width: 100%; background: #ffbc00; color: #000000; border: none; padding: 15px; font-size: 12px; font-weight: 900; letter-spacing: 2px; border-radius: 6px; cursor: pointer; text-transform: uppercase; margin-top: 15px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255,188,0,0.2); }
+        .vault-submit-btn:hover { background: #ffffff; }
+
+        /* 🎁 Gifts रिडीम कोड बॉक्स स्टाइल्स */
+        .gift-box-wrapper { background: #05050c; border: 1px dashed #00ff66; border-radius: 12px; padding: 20px; text-align: left; margin-bottom: 22px; }
+        /* 📊 Weekly Toppers लीडरबोर्ड स्क्रॉल डिब्बा */
+        .leaderboard-scroll-pane { background: #000000; border: 1px solid #1a1a2e; border-radius: 8px; height: 160px; overflow-y: auto; padding: 10px; margin-top: 10px; }
+        .leaderboard-row-node { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid #05050c; font-size: 11.5px; font-weight: bold; color: #8a8ab5; }
+        .rank-badge-node { font-size: 10px; font-weight: 900; padding: 2px 6px; border-radius: 3px; background: #141424; color: #ffffff; }
+        .rank-top { background: #ffbc00; color: #000000; }
+        
+        /* 🚪 वीआईपी लॉगआउट सिस्टम (Danger Neon Red) */
+        .danger-logout-trigger-btn { width: 100%; background: #000000; color: #ff3366; border: 2px solid #ff3366; padding: 15px; font-size: 12px; font-weight: 900; letter-spacing: 2px; border-radius: 6px; cursor: pointer; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px; transition: all 0.3s ease; margin-top: 10px; }
+        .danger-logout-trigger-btn:hover { background: #ff3366; color: #ffffff; box-shadow: 0 0 20px #ff3366; }
+
+        /* यूनिवर्सल फिक्स ४-बटन स्टिकी मेनू (Sticky Bottom Menu) बाएँ से दाएँ फिक्स क्रम */
+        .bottom-sticky-navbar { position: fixed; bottom: 0; left: 0; width: 100%; background: #050508; border-top: 2px solid #131322; display: flex; height: 75px; z-index: 4000; }
+        .navbar-item-link { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #4e4e70; text-decoration: none; font-size: 9.5px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; gap: 4px; }
+        .navbar-item-link.active-tab { color: #ffbc00; text-shadow: 0 0 8px rgba(255,188,0,0.3); }
+        .navbar-item-link span { font-size: 18px; }
+
+        .bilingual-chroma-toast { display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); padding: 15px 24px; border-radius: 8px; font-size: 11.5px; font-weight: bold; z-index: 5000; line-height: 1.4; max-width: 90%; width: 420px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
+    </style>
+</head>
+<body>
+
+    <div class="header-brand-strip">// SYSTEM DECENTRALIZED CAPITAL ACCOUNT CORE //</div>
+    <div class="workspace-wrapper">
+        <!-- १. टॉप आलीशान ऑपरेटर प्रोफाइल कार्ड -->
+        <div class="shreewin-profile-card">
+            <div class="profile-meta-row">
+                <div class="user-phone-string" id="display-client-mobile">Node: +91 ----------</div>
+                <div class="user-uid-badge">UID | <span id="display-client-uid" style="color:#ffffff;">------</span></div>
+                <div class="level-badge-string">Mining Level 01</div>
+            </div>
+            <div style="font-size:10px; font-weight:bold; color:#8a8ab5; text-transform:uppercase; letter-spacing:1px;">Total Wallet Balance</div>
+            <div class="giant-balance-node">₹<span id="display-client-balance">0.00</span></div>
+            
+            <!-- लाइफटाइम डेटा सेल डिस्प्ले (नियॉन ग्लोइंग पट्टी) -->
+            <div class="lifetime-data-glow-strip" id="display-lifetime-shared-data">
+                Lifetime Shared Data: 0.00 GB / लाइफटाइम डेटा: 0.00 GB
+            </div>
+        </div>
+
+        <!-- २. स्मार्ट विथड्रॉल ३-स्लॉट तिजोरी (All Option at Bottom Side) -->
+        <div class="section-vault-card">
+            <div class="section-headline">💳 Smart Withdrawal Accounts Slot (Lifetime 3 Limit)</div>
+            <div class="slot-selector-grid">
+                <div class="payout-slot-row slot-active" id="slot-trigger-1" onclick="switchWithdrawalSlotOverride(1)">
+                    <span class="slot-label-text">Slot 01: Primary UPI ID</span> <span class="slot-status-string" id="slot-state-1">Unlinked</span>
+                </div>
+                <div class="payout-slot-row" id="slot-trigger-2" onclick="switchWithdrawalSlotOverride(2)">
+                    <span class="slot-label-text">Slot 02: Secondary UPI ID</span> <span class="slot-status-string" id="slot-state-2">Unlinked</span>
+                </div>
+                <div class="payout-slot-row" id="slot-trigger-3" onclick="switchWithdrawalSlotOverride(3)">
+                    <span class="slot-label-text">Slot 03: Bank Account Transfer</span> <span class="slot-status-string" id="slot-state-3">Unlinked</span>
+                </div>
+            </div>
+            
+            <div id="dynamic-slot-inputs-zone">
+                <input type="text" id="wdx-input-address" class="vault-input-field" placeholder="Enter UPI ID (e.g. name@upi)...">
+                <input type="text" id="wdx-input-holder" class="vault-input-field" placeholder="Enter Full Account Holder Name...">
+            </div>
+            
+            <input type="number" id="wdx-input-amount" class="vault-input-field" placeholder="Enter Amount (₹)...">
+            <div style="font-size:10px; font-weight:bold; color:#ff3366; margin-top:8px; text-transform:uppercase; letter-spacing:0.5px;">
+                ⚠️ Network Tax: Fixed ₹6 GST will be deducted. / नेटवर्क टैक्स: ₹6 फिक्स GST कटेगा।
+            </div>
+            <button class="vault-submit-btn" onclick="executeWithdrawalSubmissionOverride()">Confirm Withdrawal / निकासी की पुष्टि करें</button>
+        </div>
+
+        <!-- ३. Gifts (रिडीम कोड बॉक्स) -->
+        <div class="gift-box-wrapper">
+            <div class="section-headline" style="color:#00ff66; border-color:#00ff66;">🎁 Gifts Capital Redeem Code Box</div>
+            <input type="text" id="gift-code-payload" class="vault-input-field" style="border-color:#00ff66;" placeholder="Enter custom secret code...">
+            <button class="vault-submit-btn" style="background:#00ff66; box-shadow: 0 4px 15px rgba(0,255,102,0.2);" onclick="executeGiftPacketRedeemOverride()">Redeem Code</button>
+        </div>
+
+        <!-- ४. Weekly Toppers लीडरबोर्ड स्क्रॉल डिब्बा -->
+        <div class="section-vault-card">
+            <div class="section-headline" style="border-color:#ffbc00;">📊 Weekly Toppers Leaderboard (Shared Data)</div>
+            <div class="leaderboard-scroll-pane" id="leaderboard-scroll-box"></div>
+        </div>
+
+        <!-- ५. 🔧 सर्विस सेंटर सेटिंग्स (Secure Password Change) -->
+        <div class="section-vault-card">
+            <div class="section-headline" style="border-color:#00f0ff;">🔧 Service Center Settings (Secure PIN Update)</div>
+            <input type="password" id="pass-current" class="vault-input-field" placeholder="Enter Current Password...">
+            <input type="password" id="pass-new" class="vault-input-field" placeholder="Enter New Password PIN...">
+            <input type="password" id="pass-confirm" class="vault-input-field" placeholder="Confirm New Password PIN...">
+            <button class="vault-submit-btn" style="background:#00f0ff; box-shadow:0 4px 15px rgba(0,240,255,0.2);" onclick="executePasswordChangeOverride()">Update Secure Password</button>
+            
+            <!-- 🚪 वीआईपी लॉगआउट सिस्टम -->
+            <button class="danger-logout-trigger-btn" onclick="executeTerminalSessionLogoutOverride()">Logout Node 🚪💨</button>
+        </div>
+    </div>
+
+    <!-- यूनिवर्सल फिक्स ४-बटन स्टिकी मेनू बाएँ से दाएँ फिक्स क्रम में और तुम्हारा असली डबल XX लिंक -->
+    <div class="bottom-sticky-navbar">
+        <a href="/home.html" class="navbar-item-link"><span>🏠</span>Home</a>
+        <a href="/surveys.html" class="navbar-item-link"><span>📋</span>Surveys</a>
+        <a href="#" class="navbar-item-link" onclick="window.open('https://t.me', '_blank')"><span>✈️</span>Promotion</a>
+        <a href="/account.html" class="navbar-item-link active-tab"><span>👤</span>Account</a>
+    </div>
+
+    <div class="bilingual-chroma-toast" id="account-bilingual-toast"></div>
+    <script>
+        const activeClientMobile = localStorage.getItem('user_session_mobile') || '9336717771';
+        let currentlySelectedSlot = 1;
+        let activeSlotsLinkedCount = 0;
+
+        function fireAccountToast(en, hi, isSuccess) {
+            const toast = document.getElementById('account-bilingual-toast');
+            toast.innerHTML = `<div>${en}</div><div style="font-size:10px;color:#ffbc00;margin-top:4px;">${hi}</div>`;
+            toast.style.display = 'block';
+            if (isSuccess) {
+                toast.style.background = 'rgba(5,30,15,0.98)'; toast.style.border = '1px solid #00ff66'; toast.style.color = '#00ff66';
+            } else {
+                toast.style.background = 'rgba(30,5,10,0.98)'; toast.style.border = '1px solid #ff3366'; toast.style.color = '#ff3366';
+            }
+            setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        }
+
+        // काम: ३ अलग-अलग स्लॉट्स (UPI 1, UPI 2, Bank) का डायनामिक इनपुट स्विचर
+        function switchWithdrawalSlotOverride(slotNumber) {
+            currentlySelectedSlot = slotNumber;
+            document.querySelectorAll('.payout-slot-row').forEach(row => row.classList.remove('slot-active'));
+            document.getElementById(`slot-trigger-${slotNumber}`).classList.add('slot-active');
+            
+            const inputsZone = document.getElementById('dynamic-slot-inputs-zone');
+            if (slotNumber === 1 || slotNumber === 2) {
+                inputsZone.innerHTML = `
+                    <input type="text" id="wdx-input-address" class="vault-input-field" placeholder="Enter UPI ID (e.g. name@upi)...">
+                    <input type="text" id="wdx-input-holder" class="vault-input-field" placeholder="Enter Full Account Holder Name...">
+                `;
+            } else {
+                inputsZone.innerHTML = `
+                    <input type="text" id="wdx-input-address" class="vault-input-field" placeholder="Enter Bank Account Number...">
+                    <input type="text" id="wdx-input-holder" class="vault-input-field" placeholder="Enter Full Bank Account Holder Name...">
+                    <input type="text" id="wdx-input-ifsc" class="vault-input-field" placeholder="Enter Bank IFSC Code...">
+                `;
+            }
+        }
+
+        // काम: स्मार्ट विथड्रॉल स्लॉट्स और टैक्स लिमिट सबमिशन लूप
+        async function executeWithdrawalSubmissionOverride() {
+            const amtField = document.getElementById('wdx-input-amount');
+            const amtValue = parseFloat(amtField.value);
+            const addressVal = document.getElementById('wdx-input-address').value.trim();
+            const holderVal = document.getElementById('wdx-input-holder').value.trim();
+            
+            if(!amtValue || !addressVal || !holderVal) {
+                return fireAccountToast("❌ ERROR: ALL ACCOUNT AND VALUE FIELDS REQUIRED.", "त्रुटि: सभी खाते और राशि फ़ील्ड भरना अनिवार्य है।", false);
+            }
+            
+            const stateBadge = document.getElementById(`slot-state-${currentlySelectedSlot}`);
+            const isNewSlotLinking = stateBadge.innerText === 'Unlinked';
+            
+            const accountDetailsObj = { slot: currentlySelectedSlot, address: addressVal, holder: holderVal };
+            if(document.getElementById('wdx-input-ifsc')) {
+                accountDetailsObj.ifsc = document.getElementById('wdx-input-ifsc').value.trim();
+            }
+
+            try {
+                const res = await fetch('/api/user/submit-withdrawal-vault', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        mobile: activeClientMobile,
+                        amount: amtValue,
+                        account_details: accountDetailsObj,
+                        is_new_slot_linking: isNewSlotLinking
+                    })
+                });
+                const data = await res.json();
+                if(res.ok) {
+                    stateBadge.innerText = "Linked ✅";
+                    stateBadge.style.color = "#00ff66";
+                    amtField.value = '';
+                    fireAccountToast("🟢 SUCCESS: WITHDRAWAL REQUEST INJECTED SUCCESSFULLY. TAX RESOLVED.", "सफलता: निकासी अनुरोध सफलतापूर्वक दर्ज हो गया है। ₹6 GST टैक्स काट लिया गया है।", true);
+                    synchronizeAccountVaultCore();
+                } else {
+                    fireAccountToast("❌ TRANSACTION DENIED.", data.error || "Limit check failed.", false);
+                }
+            } catch(e){}
+        }
+
+        // काम: 'First Come, First Served' गिफ्ट कोड रिडीम बॉक्स रिस्पॉन्स
+        async function executeGiftPacketRedeemOverride() {
+            const codeField = document.getElementById('gift-code-payload');
+            const codeValue = codeField.value.trim();
+            if(!codeValue) return;
+
+            try {
+                const res = await fetch('/api/user/redeem-gift-packet', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ mobile: activeClientMobile, gift_code: codeValue })
+                });
+                const data = await res.json();
+                if(res.ok) {
+                    fireAccountToast(`🟢 SUCCESS: REDEEM PACKET ENGAGED! +₹${data.amount} CREDITED.`, `बधाई हो! गिफ्ट कोड सफलतापूर्वक रिडीम हो गया है। आपके वॉलेट में ₹${data.amount} जोड़ दिए गए हैं।`, true);
+                    codeField.value = '';
+                    synchronizeAccountVaultCore();
+                } else {
+                    fireAccountToast("❌ REDEEM FAILURE.", data.error || "Code claimed.", false);
+                }
+            } catch(e){}
+        }
+
+        // काम: कड़ा सिक्योर पासवर्ड चेंज इंजन
+        async function executePasswordChangeOverride() {
+            const currentPass = document.getElementById('pass-current').value.trim();
+            const newPass = document.getElementById('pass-new').value.trim();
+            const confirmPass = document.getElementById('pass-confirm').value.trim();
+            
+            if(!currentPass || !newPass || !confirmPass) return;
+            if(newPass !== confirmPass) {
+                return fireAccountToast("❌ SECURITY ERROR: NEW STRINGS DO NOT MATCH.", "त्रुटि: नया पासवर्ड और कन्फर्म नया पासवर्ड आपस में मेल नहीं खाते।", false);
+            }
+
+            try {
+                const res = await fetch('/api/user/secure-password-change', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ mobile: activeClientMobile, current_password: currentPass, new_password: newPass })
+                });
+                const data = await res.json();
+                if(res.ok) {
+                    fireAccountToast("🟢 SUCCESS: SECURE SECURITY PASSWORD MATRIX UPDATED.", "बधाई हो! आपका नया सुरक्षा पासवर्ड तिजोरी में सफलतापूर्वक अपडेट हो गया है।", true);
+                    document.getElementById('pass-current').value = '';
+                    document.getElementById('pass-new').value = '';
+                    document.getElementById('pass-confirm').value = '';
+                } else {
+                    fireAccountToast("❌ UPDATE REJECTED.", data.error || "Old pass wrong.", false);
+                }
+            } catch(e){}
+        }
+
+        // काम: ४० फेक छिपे हुए नंबरों का स्मूथ लीडरबोर्ड रेंडर इंजन
+        function generateFakeLeaderboardScrollMatrix() {
+            const pane = document.getElementById('leaderboard-scroll-box');
+            let buffer = '';
+            for (let i = 1; i <= 40; i++) {
+                let rewardAmt = 1100;
+                if(i <= 10) rewardAmt = 8400;
+                else if(i <= 20) rewardAmt = 4200;
+                else if(i <= 30) rewardAmt = 2200;
+                
+                const rankClass = i <= 3 ? 'rank-badge-node rank-top' : 'rank-badge-node';
+                const fakeMobile = `933XXXXX${Math.floor(10 + Math.random() * 89)}`;
+                const fakeGB = (120 - (i * 2.4) + Math.random()).toFixed(1);
+                
+                buffer += `
+                    <div class="leaderboard-row-node">
+                        <div><span class="${rankClass}">#${i}</span> 👤 Node ${fakeMobile}</div>
+                        <div style="text-align:right;">
+                            <div style="color:#00ff66;font-size:11px;">Data: ${fakeGB} GB</div>
+                            <div style="color:#ffbc00;font-size:9.5px;">Bonus: +₹${rewardAmt}</div>
+                        </div>
+                    </div>
+                `;
+            }
+            pane.innerHTML = buffer;
+        }
+
+        async function synchronizeAccountVaultCore() {
+            try {
+                const res = await fetch(`/api/user/vault-profile?mobile=${activeClientMobile}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    document.getElementById('display-client-mobile').innerText = `Node: +91 ${data.mobile}`;
+                    document.getElementById('display-client-uid').innerText = data.uid || "------";
+                    document.getElementById('display-client-balance').innerText = data.balance.toFixed(2);
+                    document.getElementById('display-lifetime-shared-data').innerText = `Lifetime Shared Data: ${data.lifetime_shared_data_gb.toFixed(2)} GB / लाइफटाइम डेटा: ${data.lifetime_shared_data_gb.toFixed(2)} GB`;
+                    
+                    if(data.is_vip === true) {
+                        localStorage.setItem('is_vip_tier', 'true');
+                    }
+                }
+            } catch(e){}
+        }
+
+        function executeTerminalSessionLogoutOverride() {
+            localStorage.clear();
+            fireAccountToast("💀 TERMINAL DEACTIVATED. SHUTTING DOWN NODES...", "ब्राउज़र सेशन डिलीट किया जा रहा है... लॉगिन गेट पर रीप्ले।", false);
+setTimeout(() => { window.location.href = '/index.html'; }, 1000);
+}
+window.onload = () => {
+synchronizeAccountVaultCore();
+generateFakeLeaderboardScrollMatrix();
+};
